@@ -55,6 +55,10 @@ public class StringUtil
 		return trimOnSide(s, LEFT);
 	}
 
+	public static String trim(String s){
+		return rTrim(lTrim(s));
+	}
+
 	// Retorna un String[] conteniendo los elementos de arr
 	// representados como cadenas de caracteres
 	public static String[] toStringArray(int arr[])
@@ -132,4 +136,17 @@ public class StringUtil
 		}
 		return -1;
 	};
+
+	public static int indexOfNV2(String s, char c, int n){
+		int apariciones = 0;
+		int i = -1;
+		while(apariciones < n){
+			i = s.indexOf(c,i +1 );
+			if(i == -1){
+				return -1;
+			}
+			apariciones++;
+		}
+		return i;
+	}
 }
