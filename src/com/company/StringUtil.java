@@ -1,3 +1,5 @@
+package com.company;
+
 public class StringUtil
 {
 	// Retorna una cadena compuesta por n caracteres c
@@ -16,7 +18,7 @@ public class StringUtil
 	// y precedida de tantos caracteres c como sea necesario
 	// para completar la longitud mencionada
 	// Ejemplo lpad("5",3,'0') ==> "005"
-	public static String lpad(String s, int n, char c)
+	public static String lPad(String s, int n, char c)
 	{
 		int curLeng = s.length();
 
@@ -30,6 +32,27 @@ public class StringUtil
 			s = s + c;
 		}
 		return s;*/
+	}
+
+	public static String rPad(String s, int n, char c)
+	{
+		int curLeng = s.length();
+
+		return s + replicate(c,n-curLeng);
+
+	}
+
+
+	public static String lTrim(String s)
+	{
+		boolean LEFT = true;
+		return trimOnSide(s, LEFT);
+	}
+
+	public static String rTrim(String s)
+	{
+		boolean LEFT = false;
+		return trimOnSide(s, LEFT);
 	}
 
 	// Retorna un String[] conteniendo los elementos de arr
@@ -84,7 +107,29 @@ public class StringUtil
 		int maxLeng = maxLength(arr);
 		for(int i = 0; i < arr.length; i++)
 		{
-			arr[i] = lpad(arr[i],maxLeng,c);
+			arr[i] = lPad(arr[i],maxLeng,c);
 		}
 	}
+	public static String trimOnSide(String s, boolean left)
+	{
+		if(left){
+			while(s.length() > 0 && s.charAt(0) == ' ')
+				s = s.substring(1);
+		}else{
+			while(s.length() > 0 && s.charAt(s.length()-1) == ' ')
+				s = s.substring(0, s.length()-1);
+		}
+
+		return s;
+	}
+	public static int indexOfN(String s,char c,int n){
+		int apariciones = 0;
+		for(int i = 0; i < s.length(); i++){
+			if (s.charAt(i) == c){
+				apariciones++;
+				if (apariciones == n) return i;
+			}
+		}
+		return -1;
+	};
 }
