@@ -8,6 +8,9 @@ public class Main {
 
         Fecha f1 = new Fecha(23, 2,2021);
 
+        //System.out.println(f.toString());
+
+        f.addOneDay();
         System.out.println(f.toString());
     }
 }

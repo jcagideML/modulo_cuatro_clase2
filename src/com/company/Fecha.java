@@ -41,8 +41,42 @@ public class Fecha {
        }
     }
 
+    // Suma un día a la fecha actual
+    public void addOneDay(){
+        Calendar gc = new GregorianCalendar(this.anio, this.mes, this.dia);
+
+        gc.add(Calendar.DAY_OF_MONTH, 1);
+        setDia(gc.get(Calendar.DAY_OF_MONTH));
+        setMes(gc.get(Calendar.MONTH));
+        setAnio(gc.get(Calendar.YEAR));
+    }
+
     @Override
     public String toString(){
-        return dia + "/"+ mes +"/" + anio;
+        return getDia() + "/"+ getMes() +"/" + getAnio();
+    }
+
+    public int getDia() {
+        return dia;
+    }
+
+    public void setDia(int dia) {
+        this.dia = dia;
+    }
+
+    public int getMes() {
+        return mes;
+    }
+
+    public void setMes(int mes) {
+        this.mes = mes;
+    }
+
+    public int getAnio() {
+        return anio;
+    }
+
+    public void setAnio(int anio) {
+        this.anio = anio;
     }
 }
