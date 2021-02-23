@@ -30,15 +30,22 @@ public class Fecha {
 
     public boolean validarDatos(int dia, int mes, int anio){
 
-       try{
-           String s = dia + "/"+ mes+ "/"+anio;
+        if(anio<1){
+            return false;
+        }
+        if(mes >12 || mes <1){
+            return false;
+        }
 
-           Date date = formateador.parse(s);
-           System.out.println(date);
-           return true;
-       }catch (Exception e) {
-           return false;
-       }
+        GregorianCalendar gCal = new GregorianCalendar(anio,mes,1);
+        int maxDia = gCal.getActualMaximum(Calendar.DAY_OF_MONTH);
+        if(dia < 1 || dia > maxDia){
+            return false;
+        }
+
+        
+        return true;
+
     }
 
     @Override
